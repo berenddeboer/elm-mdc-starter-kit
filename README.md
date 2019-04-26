@@ -32,7 +32,8 @@ Test hot loading:
 
 3. Change the button text in `src/Main.elm` and save. Browser should automatically update.
 
-Both scss and .elm updates support hot reloading.
+Whenever you change a `.scss` or `.elm` file, your browser will be
+reloaded, but keep its state.
 
 
 # Production
