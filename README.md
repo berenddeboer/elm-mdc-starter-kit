@@ -6,7 +6,9 @@ Best practice example of using
 
 # Install
 
-1. Get the latest elm-mdc:
+After cloning the repository:
+
+1. Add the latest [elm-mdc](https://github.com/aforemny/elm-mdc):
 
 ```
 git submodule init
@@ -22,7 +24,7 @@ npm install
 
 # Hot loading
 
-Show off hot loading:
+Test hot loading:
 
 1. Run: `npm run hot`
 
