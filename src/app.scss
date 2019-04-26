@@ -1,1 +1,6 @@
-@import "../node_modules/material-components-web/material-components-web";
+// Only import CSS we need.
+@import "@material/button/mdc-button";
+@import "@material/snackbar/mdc-snackbar";
+
+// In case we basically want everything:
+//@import "../node_modules/material-components-web/material-components-web";

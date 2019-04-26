@@ -1,7 +1,7 @@
 # About
 
 Best practice example of using
-[elm-mdc](https://github.com/aforemny/elm-mdc).
+[elm-mdc](https://github.com/aforemny/elm-mdc) using hot code swapping.
 
 
 # Install
@@ -22,7 +22,7 @@ npm install
 ```
 
 
-# Hot loading
+# Hot code swapping
 
 Test hot loading:
 
@@ -31,6 +31,8 @@ Test hot loading:
 2. Point browser at: `http://localhost:3009/`
 
 3. Change the button text in `src/Main.elm` and save. Browser should automatically update.
+
+Both scss and .elm updates support hot reloading.
 
 
 # Production
