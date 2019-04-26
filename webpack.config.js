@@ -67,7 +67,7 @@ module.exports = {
             options: {
               cwd: __dirname,
               debug: false,
-              optimize: false
+              optimize: mode === "production"
             }
           }
         ]
