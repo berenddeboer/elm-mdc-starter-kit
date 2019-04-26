@@ -1,0 +1,23 @@
+language: node_js
+node_js:
+  - "10.15.3"
+dist: xenial
+cache:
+  directories:
+    - sysconfcpus
+before_install:
+  - | # https://github.com/elm-lang/elm-compiler/issues/1473
+    if [ ! -d sysconfcpus/bin ];
+    then
+      git clone https://github.com/obmarg/libsysconfcpus.git;
+      cd libsysconfcpus;
+      ./configure --prefix=$TRAVIS_BUILD_DIR/sysconfcpus;
+      make && make install;
+      cd ..;
+    fi
+    git submodule init
+    git submodule update
+  - npm install
+script:
+  - export PATH=$(npm bin):$PATH
+  - sysconfcpus/bin/sysconfcpus -n 2 npm run build
