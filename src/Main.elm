@@ -3,9 +3,13 @@ module Main exposing (..)
 import Browser
 import Html exposing (Html, text)
 import Material
+import Material.Options as Options exposing (styled, cs)
 import Material.Button as Button
-import Material.Options as Options
+import Material.Snackbar as Snackbar
 
+
+
+-- MODEL
 
 type alias Model =
     { mdc : Material.Model Msg
@@ -38,6 +42,9 @@ init =
     ( defaultModel, Material.init Mdc )
 
 
+
+-- UPDATE
+
 subscriptions : Model -> Sub Msg
 subscriptions model =
     Material.subscriptions Mdc model
@@ -50,17 +57,43 @@ update msg model =
             Material.update Mdc msg_ model
 
         Click ->
-            ( model, Cmd.none )
+            toast model "You clicked me!"
 
+
+{-| Helper function to show a toast message.
+-}
+toast : Model -> String -> ( Model, Cmd Msg )
+toast model message =
+    let
+        contents =
+            Snackbar.toast Nothing message
+        ( mdc, effects ) =
+            Snackbar.add Mdc "my-snackbar" contents model.mdc
+    in
+        ( { model | mdc = mdc }
+        , effects
+        )
+
+
+
+
+-- VIEW
 
 view : Model -> Html Msg
 view model =
-    Html.div []
+    styled Html.div [ cs "mdc-typography" ]
         [ Button.view Mdc
             "my-button"
             model.mdc
             [ Button.ripple
+            , Button.raised
             , Options.onClick Click
             ]
             [ text "Click me!" ]
+        , viewSnackbar model
         ]
+
+
+viewSnackbar : Model -> Html Msg
+viewSnackbar model =
+    Snackbar.view Mdc "my-snackbar" model.mdc [] []
