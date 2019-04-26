@@ -1,7 +1,10 @@
 # About
 
+[![Build Status](https://api.travis-ci.org/berenddeboer/elm-mdc-starter-kit.svg?branch=master)](https://travis-ci.org/berenddeboer/elm-mdc-starter-kit/)
+
 Best practice example of using
-[elm-mdc](https://github.com/aforemny/elm-mdc) using hot code swapping.
+[elm-mdc](https://github.com/aforemny/elm-mdc), the Elm implementation
+of [Google's Material Design for the web](https://github.com/material-components/material-components-web/), using hot code swapping.
 
 
 # Install
@@ -43,3 +46,8 @@ Create production ready files in the `dist` directory:
 ```
 npm run build
 ```
+
+
+# Under the hood
+
+The hot reloading works thanks to the [elm-hot-webpack-loader](https://github.com/klazuka/elm-hot-webpack-loader).
