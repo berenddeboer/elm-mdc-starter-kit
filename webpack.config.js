@@ -18,6 +18,8 @@ module.exports = {
     filename: mode === "production" ? "[name].[chunkhash].js" : "[name].js",
   },
 
+  devtool: "cheap-module-source-map",
+
   module: {
     rules: [
       {
@@ -26,16 +28,18 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        use:  [
+        use: [
           "css-hot-loader",
           MiniCssExtractPlugin.loader,
           { loader: "css-loader",
             options: {
+              sourceMap: true,
             }
           },
           { loader: "postcss-loader",
             options: {
               ident: "postcss",
+              sourceMap: true,
               plugins: [
                 require("autoprefixer")({})
               ]
@@ -43,6 +47,7 @@ module.exports = {
           },
           { loader: "sass-loader",
             options: {
+              sourceMap: true,
               includePaths: ["node_modules"]
             }
           }
