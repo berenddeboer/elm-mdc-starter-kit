@@ -4,6 +4,7 @@ import Browser
 import Html exposing (Html, text)
 import Material
 import Material.Options as Options exposing (styled, cs)
+import Material.LayoutGrid as LayoutGrid exposing (cell, span1Phone, span2Phone)
 import Material.Button as Button
 import Material.Snackbar as Snackbar
 
@@ -82,15 +83,21 @@ toast model message =
 view : Model -> Html Msg
 view model =
     styled Html.div [ cs "mdc-typography" ]
-        [ Button.view Mdc
-            "my-button"
-            model.mdc
-            [ Button.ripple
-            , Button.raised
-            , Options.onClick Click
-            ]
-            [ text "Click me!" ]
-        , viewSnackbar model
+        [ LayoutGrid.view []
+              [ cell [ span1Phone ] []
+              , cell [ span2Phone ]
+                  [ Button.view Mdc
+                          "my-button"
+                          model.mdc
+                          [ Button.ripple
+                          , Button.raised
+                          , Options.onClick Click
+                          ]
+                          [ text "Click me!" ]
+                    , viewSnackbar model
+                    ]
+              , cell [span1Phone ] []
+              ]
         ]
 
 
