@@ -29,6 +29,10 @@
   },
   "dependencies": {
     "custom-event": "^1.0.1",
-    "focus-trap": "^4.0.2"
+    "focus-trap": "^4.0.2",
+    "fstream": "^1.0.12",
+    "lodash": "^4.17.15",
+    "lodash.mergewith": "^4.6.2",
+    "tar": "^4.4.10"
   }
 }
