@@ -18,6 +18,7 @@ before_install:
     git submodule init
     git submodule update
   - npm install
+  - npm run build
 script:
   - export PATH=$(npm bin):$PATH
   - sysconfcpus/bin/sysconfcpus -n 2 npm run build
