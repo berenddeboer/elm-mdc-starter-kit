@@ -4,6 +4,7 @@ const webpack = require("webpack");
 
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = (env, options) => {
 
@@ -26,6 +27,12 @@ module.exports = (env, options) => {
         {
           test: /\.js$/,
           exclude: /node_modules/,
+          use: {
+            loader: 'babel-loader',
+            options: {
+              presets: ['env']
+            }
+          },
         },
         {
           test: /\.scss$/,
@@ -102,7 +109,29 @@ module.exports = (env, options) => {
       proxy: {
         "/api": "http://localhost"
       }
-    }
+    },
+
+    optimization: {
+      minimizer: [
+        new UglifyJsPlugin({
+          uglifyOptions: {
+            compress: {
+              pure_funcs: "F2,F3,F4,F5,F6,F7,F8,F9,A2,A3,A4,A5,A6,A7,A8,A9",
+              pure_getters: true,
+              keep_fargs: false,
+              unsafe_comps: true,
+              unsafe: true,
+            },
+            mangle: false,
+          }
+        }),
+        new UglifyJsPlugin({
+          uglifyOptions: {
+            mangle: true,
+          }
+        })
+      ],
+    },
 
   }
 
