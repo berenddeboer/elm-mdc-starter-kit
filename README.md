@@ -41,7 +41,7 @@ reloaded, but keep its state.
 
 # Production
 
-Create production ready files in the `dist` directory:
+Create production ready files in the `dist` directory with:
 
 ```
 npm run build
