@@ -2,6 +2,7 @@
 const path = require("path");
 const webpack = require("webpack");
 
+const noop = require("noop-webpack-plugin");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
@@ -93,7 +94,7 @@ module.exports = (env, options) => {
 
     plugins: [
       // Always clean /dist/ directory
-      new CleanWebpackPlugin(),
+      mode === "production" ? new CleanWebpackPlugin() : noop(),
 
       new MiniCssExtractPlugin({
         filename: mode === "production" ? "[name].[contenthash].css" : "[name].css",
