@@ -4,6 +4,7 @@ const webpack = require("webpack");
 
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = (env, options) => {
@@ -17,7 +18,7 @@ module.exports = (env, options) => {
 
     output: {
       path: path.resolve(__dirname, "dist"),
-      filename: mode === "production" ? "[name].js" : "[name].js",
+      filename: mode === "production" ? "[name].[hash].js" : "[name].js",
     },
 
     devtool: "cheap-module-source-map",
@@ -61,11 +62,13 @@ module.exports = (env, options) => {
             }
           ]
         },
+        /*
         {
           test: /\.html$/,
           exclude: [/node_modules/],
           loader: "file-loader?name=[name].[ext]"
         },
+        */
         {
           test: /\.elm$/,
           exclude: [/elm-stuff/, /node_modules/, /\.#.*/],
@@ -93,7 +96,13 @@ module.exports = (env, options) => {
       new CleanWebpackPlugin(),
 
       new MiniCssExtractPlugin({
-        filename: mode === "production" ? "[name].css" : "[name].css",
+        filename: mode === "production" ? "[name].[contenthash].css" : "[name].css",
+      }),
+
+      new HtmlWebpackPlugin({
+        inject: false,
+        hash: false,
+        template: "./src/index.html",
       }),
 
       // Support hot reloading

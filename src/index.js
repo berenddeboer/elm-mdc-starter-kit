@@ -1,9 +1,10 @@
-"use strict"
+"use strict";
 
 import "./app.scss"
 import "../elm-mdc/src/elm-mdc.js"
 
-require('./index.html')
+// disable loading index.html here, else html-webpack-plugin does not appear to work
+//require('./index.html')
 const {Elm} = require('./Main.elm')
 
 
