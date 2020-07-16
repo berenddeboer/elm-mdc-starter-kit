@@ -37,7 +37,7 @@
     "elm": "^0.19.1-1",
     "focus-trap": "^4.0.2",
     "fstream": "^1.0.12",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "lodash.mergewith": "^4.6.2",
     "mixin-deep": "^2.0.1",
     "noop-webpack-plugin": "^1.0.1",
